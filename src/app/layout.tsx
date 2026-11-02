@@ -19,9 +19,6 @@ const inter = Inter({ subsets: ["latin"], variable: "--font-inter", display: "sw
 const archivo = Archivo({ subsets: ["latin"], weight: ["500", "600", "700", "800", "900"], variable: "--font-archivo", display: "swap" })
 const instrumentSerif = Instrument_Serif({ subsets: ["latin"], weight: "400", style: ["normal", "italic"], variable: "--font-instrument-serif", display: "swap" })
 
-// the whole site is prerendered: no request-time server work on any page
-export const ensureStatic = "navigation"
-
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: { default: `${fullName} · ${site.role[0].toUpperCase() + site.role.slice(1)} in ${cityName}`, template: `%s · ${fullName}` },

@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "node scripts/seo-files.mjs && next build && node scripts/export-fixups.mjs",
     "start": "next start",
     "lint": "eslint"
   },

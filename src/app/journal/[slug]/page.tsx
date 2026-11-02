@@ -10,8 +10,8 @@ import { fullName } from "@/content/site"
 import { Toc } from "./toc"
 import { Motion } from "@/components/motion"
 
-// every post is prerendered; an unknown slug reaches notFound() below
-// (dynamicParams isn't available with Cache Components; see migrating-to-cache-components.md)
+// every post is prerendered, and only those: the static export needs the full list at build time
+export const dynamicParams = false
 export function generateStaticParams() {
   return POSTS.map((p) => ({ slug: p.slug }))
 }

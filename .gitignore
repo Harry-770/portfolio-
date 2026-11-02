@@ -46,3 +46,10 @@ next-env.d.ts
 # local tooling: design-check screenshots and design-skill state
 /.inspect/
 /.taste-skill/
+
+# written by scripts/seo-files.mjs on every build
+/public/robots.txt
+/public/sitemap.xml
+
+# the upload bundle for Hostycare (made from out/)
+/hostycare-upload.zip

@@ -1,0 +1,27 @@
+export const meta = {
+  "title": "TIL: prefers-reduced-motion isn't optional",
+  "excerpt": "A friend got motion sick from my site. Fair. Here's the five-line fix.",
+  "date": "2026-09-03",
+  "type": "TIL",
+  "tags": [
+    "CSS",
+    "Accessibility"
+  ],
+  "words": 58,
+  "headings": []
+}
+
+A friend with vestibular issues opened an early version of this site and had to close it after ten seconds. That was a humbling Tuesday.
+
+The fix is almost embarrassingly small:
+
+```css
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+```
+
+I also slow the 3D scene right down when that setting is on, and skip the scroll-linked effects entirely. It takes ten minutes, so just do it.

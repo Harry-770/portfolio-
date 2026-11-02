@@ -1,0 +1,217 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+/* =====================================================================
+   BLUE / BLACK / WHITE — near-black ground, navy-tinted panels, cool white
+   type, and electric blue (#0019FF, from the palette swatch) for the actions.
+   Light blue carries the italic accents and focus rings, because pure blue
+   text on black is hard to read. shadcn/ui reads the variables below, so its
+   components take this palette too. Dark only.
+   ===================================================================== */
+:root {
+  /* the palette */
+  --bg: #010208;            /* page ground: black with a breath of blue */
+  --surface: #0a0d1c;       /* cards and panels */
+  --surface-2: #11152b;     /* inputs, ghost buttons, tiles */
+  --surface-3: #1a2042;     /* hover on surface-2 */
+  --navy: #000080;          /* the swatch's middle step (glows, washes) */
+  --ink: #f5f7ff;           /* headings, primary text */
+  --ink-2: #d6dbf0;         /* long-form reading text */
+  --muted-ink: #a6adc9;     /* secondary text */
+  --dim: #8c93b0;           /* captions, meta (4.5:1 on panels) */
+  --electric: #0019ff;      /* buttons, active states: the swatch's brightest blue */
+  --electric-hover: #2f4bff;
+  --electric-soft: #8fa4ff; /* italic accents, links on hover, focus rings */
+  --ok: #4d82ff;            /* the "available" dot */
+  --line: rgb(170 185 255 / 0.1);
+  --line-2: rgb(170 185 255 / 0.18);
+
+  /* shadcn/ui roles, mapped onto the palette */
+  --background: var(--bg);
+  --foreground: var(--ink);
+  --card: var(--surface);
+  --card-foreground: var(--ink);
+  --popover: var(--surface);
+  --popover-foreground: var(--ink);
+  --primary: var(--electric);
+  --primary-foreground: #ffffff;
+  --secondary: var(--surface-2);
+  --secondary-foreground: var(--ink);
+  --muted: var(--surface-2);
+  --muted-foreground: var(--muted-ink);
+  --accent: var(--surface-3);
+  --accent-foreground: var(--ink);
+  --destructive: #e88080;
+  --border: var(--line);
+  --input: var(--line-2);
+  --ring: var(--electric-soft);
+  --radius: 0.875rem;
+
+  color-scheme: dark;
+}
+
+/* accent themes (components/theme-picker.tsx): the same near-black ground, a different accent family.
+   Everything accent-coloured reads these variables, so one line recolours the whole site. */
+:root[data-accent="violet"] { --electric: #6d3cff; --electric-hover: #8a63ff; --electric-soft: #c3b4ff; --navy: #2a0a7a; --ok: #9b7bff; }
+:root[data-accent="emerald"] { --electric: #059669; --electric-hover: #10b981; --electric-soft: #6ee7b7; --navy: #064e3b; --ok: #34d399; }
+:root[data-accent="sunset"] { --electric: #e5481c; --electric-hover: #ff6a3d; --electric-soft: #ffb39a; --navy: #6b1a05; --ok: #ff8a5c; }
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-surface-3: var(--surface-3);
+  --color-ink: var(--ink);
+  --color-ink-2: var(--ink-2);
+  --color-dim: var(--dim);
+  --color-electric: var(--electric);
+  --color-electric-hover: var(--electric-hover);
+  --color-electric-soft: var(--electric-soft);
+  --color-navy: var(--navy);
+  --color-ok: var(--ok);
+  --color-line: var(--line);
+  --color-line-2: var(--line-2);
+
+  --font-sans: var(--font-inter), system-ui, sans-serif;
+  --font-display: var(--font-archivo), var(--font-inter), system-ui, sans-serif;   /* every heading and number */
+  --font-serif: var(--font-instrument-serif), Georgia, serif;                       /* italic accent words only */
+  --font-heading: var(--font-display);
+
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.6);   /* 22px: media inside cards */
+  --radius-3xl: calc(var(--radius) * 2);     /* 28px: cards and panels */
+
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+
+  --text-hero: clamp(3.75rem, 1rem + 11.6vw, 11.25rem);
+  --text-page: clamp(3rem, 1.6rem + 5.4vw, 6.5rem);
+  --text-title: clamp(2.25rem, 1.5rem + 2.6vw, 3.5rem);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  html {
+    @apply bg-background font-sans;
+    -webkit-text-size-adjust: 100%;
+  }
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-size: 1.0625rem;
+    line-height: 1.6;
+    letter-spacing: -0.011em;
+    overflow-x: clip;
+  }
+  h1, h2, h3, h4 {
+    @apply font-medium;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    text-wrap: balance;
+  }
+  p { text-wrap: pretty; }
+  ::selection { background: var(--electric); color: #ffffff; }
+  :focus-visible { outline: 2px solid var(--electric-soft); outline-offset: 3px; }
+  a, button, input, textarea, label { touch-action: manipulation; -webkit-tap-highlight-color: color-mix(in srgb, var(--electric-hover) 20%, transparent); }
+  button:not(:disabled), [role="button"]:not(:disabled) { cursor: pointer; }
+  img, video { height: auto; }
+}
+
+@layer components {
+  /* the section title, used on every page */
+  .display-title {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: var(--text-title);
+    line-height: 1.02;
+    letter-spacing: -0.025em;
+    word-spacing: 0.06em;
+  }
+  /* an emphasised word inside any heading becomes the one accent: serif italic in soft electric blue */
+  :where(h1, h2, h3, .display-title, .display-accent) em {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 400;
+    letter-spacing: -0.01em;
+    color: var(--electric-soft);
+  }
+  /* the shell every section sits in */
+  .wrap {
+    width: 100%;
+    max-width: 1240px;
+    margin-inline: auto;
+    padding-inline: clamp(20px, 3vw, 32px);
+  }
+  .section-space { padding-top: clamp(96px, 11vw, 150px); }
+  .panel { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius-3xl); }
+  /* hover glow for cards: a black → navy → electric gradient rim (::before, masked to the border)
+     and a soft blue halo (::after). Both fade in on hover or keyboard focus. */
+  .glow-hover { position: relative; isolation: isolate; }
+  .glow-hover::before, .glow-hover::after {
+    content: ""; position: absolute; border-radius: inherit; pointer-events: none;
+    opacity: 0; transition: opacity 0.5s var(--ease-out-expo, ease-out);
+  }
+  .glow-hover::before {
+    inset: -1px; padding: 1px;
+    background: linear-gradient(135deg, color-mix(in srgb, var(--electric-soft) 95%, transparent), color-mix(in srgb, var(--electric) 90%, transparent) 40%, color-mix(in srgb, var(--navy) 50%, transparent) 75%, color-mix(in srgb, var(--electric-soft) 35%, transparent));
+    mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0);
+  }
+  .glow-hover::after {
+    inset: 0; z-index: -1;
+    box-shadow: 0 0 0 1px color-mix(in srgb, var(--electric) 25%, transparent), 0 18px 60px -18px color-mix(in srgb, var(--electric) 65%, transparent), 0 0 90px -30px color-mix(in srgb, var(--electric-soft) 50%, transparent);
+  }
+  .glow-hover:hover::before, .glow-hover:hover::after,
+  .glow-hover:focus-visible::before, .glow-hover:focus-visible::after { opacity: 1; }
+  /* long-form article text (journal posts) */
+  .prose-post { max-width: 68ch; font-size: 1.125rem; line-height: 1.75; color: var(--ink-2); overflow-wrap: break-word; }
+  .prose-post > * + * { margin-top: 1.2em; }
+  .prose-post h3 { font-family: var(--font-display); font-size: 1.5rem; font-weight: 700; letter-spacing: -0.02em; color: var(--ink); margin-top: 2em; }
+  .prose-post a { color: var(--ink); text-decoration: underline; text-underline-offset: 0.2em; }
+  .prose-post blockquote { font-family: var(--font-serif); font-style: italic; font-size: 1.75rem; line-height: 1.25; color: var(--ink); padding-left: 20px; border-left: 2px solid var(--line-2); }
+  .prose-post ul { list-style: disc; padding-left: 1.2em; }
+  .prose-post ol { list-style: decimal; padding-left: 1.2em; }
+  .prose-post li + li { margin-top: 0.4em; }
+  .prose-post pre { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 18px 20px; overflow-x: auto; font-size: 0.85em; }
+  .prose-post :not(pre) > code { font-size: 0.88em; background: var(--surface-2); padding: 0.1em 0.35em; border-radius: 6px; }
+}
+
+/* the hero glow breathes very slowly (components/backdrop.tsx) */
+@keyframes breathe { from { transform: scale(1); opacity: 0.85; } to { transform: scale(1.08); opacity: 1; } }
+
+/* the hero's rainbow wave rises in (components/rainbow-wave.tsx) */
+@keyframes wave-in { from { opacity: 0; transform: translateY(12%); } to { opacity: 1; transform: none; } }
+
+/* the logo strip: two identical rows, moved left by exactly one row */
+@keyframes marquee { to { transform: translateX(-50%); } }
+
+/* reduced motion: keep every finished state, drop the travel */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; animation-delay: 0s !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
+}
+
+/* Lenis smooth scroll */
+html.lenis, html.lenis body { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+.lenis.lenis-stopped { overflow: clip; }

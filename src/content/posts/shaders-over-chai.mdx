@@ -1,0 +1,41 @@
+export const meta = {
+  "title": "Shaders, explained to my designer friend over chai",
+  "excerpt": "She asked how the planets on this site work. This is roughly what I said.",
+  "date": "2025-12-08",
+  "type": "Essay",
+  "tags": [
+    "WebGL",
+    "Design"
+  ],
+  "words": 166,
+  "headings": [
+    {
+      "id": "start-with-a-gradient",
+      "label": "Start with a gradient"
+    },
+    {
+      "id": "then-add-noise",
+      "label": "Then add noise"
+    }
+  ]
+}
+
+"So is that a video?" No. "An image?" Also no. It's a tiny program that runs once for every pixel, about two million times a frame, and decides what colour that pixel should be.
+
+### Start with a gradient
+
+She makes gradients in Figma all day, so that's where we started. A shader gets the pixel's position from 0 to 1 and turns it into a colour:
+
+```
+vec3 color = mix(darkBlue, saffron, uv.x);
+```
+
+That's a left-to-right gradient. She was unimpressed, which is fair.
+
+### Then add noise
+
+Noise is smooth randomness. Feed it the position plus time, and the gradient starts to move like smoke. Stretch it sideways and you get the bands on a gas giant. Take the absolute value and you get the lava cracks on the red planet.
+
+> Most of this universe is one noise function wearing different outfits.
+
+By the second chai she was changing numbers in the shader herself. That's honestly the best way to learn this stuff: break things on purpose and watch what happens.

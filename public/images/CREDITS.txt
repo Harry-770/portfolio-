@@ -1,0 +1,17 @@
+Photos from Pexels (https://www.pexels.com/license/), free to use; credit is appreciated, not required.
+
+work.jpg              https://www.pexels.com/photo/a-white-building-with-a-blue-sky-in-the-background-28302486/
+skills.jpg            https://www.pexels.com/photo/modern-architectural-metal-roof-structure-34006096/
+about.jpg             https://www.pexels.com/photo/geometric-modern-architecture-16615613/
+journal-wireframes.jpg           https://www.pexels.com/photo/196644/ (wireframe sketches in a notebook)
+contact-desk.jpg           https://www.pexels.com/photo/1128207/ (a laptop on a desk by a window)
+svc-product-wireframe.jpg       https://www.pexels.com/photo/196645/ (a hand-drawn wireframe)
+svc-build-software.jpg         https://www.pexels.com/photo/285814/ (design software on a laptop and monitors)
+svc-3d.jpg            https://www.pexels.com/photo/a-plant-and-a-ball-on-a-table-in-front-of-a-wall-27544693/
+svc-motion-grading.jpg        https://www.pexels.com/photo/17279854/ (a colour-grading screen)
+svc-generative.jpg    https://www.pexels.com/photo/white-and-brown-round-frame-7911758/
+svc-rescue.jpg        https://www.pexels.com/photo/minimalist-green-eyeglasses-on-white-surface-36825000/
+still-sketch.jpg           https://www.pexels.com/photo/196646/ (a sketchpad of wireframes, a phone and a keyboard)
+still-focus.jpg           https://www.pexels.com/photo/8004070/ (a clean desk with a laptop and glasses)
+still-studio.jpg           https://www.pexels.com/photo/1034650/ (an iMac and a desk lamp)
+still-prototype.jpg           https://www.pexels.com/photo/3471423/ (sketching a mobile app prototype)
